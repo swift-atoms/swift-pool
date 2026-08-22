@@ -65,7 +65,7 @@
                     slotsToDrain.append((slotIndex, id))
                 }
 
-                var resumptions = [Async.Waiter.Resumption](initialCapacity: 0)
+                var resumptions = Array<Async.Waiter.Resumption>(initialCapacity: 0)
                 state.waiters.drain { entry in
                     resumptions.append(entry.resumption(with: .failure(.shutdown)))
                 }

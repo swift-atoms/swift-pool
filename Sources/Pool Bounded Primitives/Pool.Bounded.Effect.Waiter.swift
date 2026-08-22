@@ -19,7 +19,7 @@
 
             case resume(Async.Waiter.Resumption)
 
-            case batch([Async.Waiter.Resumption])
+            case batch(Array<Async.Waiter.Resumption>)
         }
     }
 #endif

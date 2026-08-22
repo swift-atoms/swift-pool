@@ -259,7 +259,7 @@
         @usableFromInline
         mutating func dequeueEligibleWaiter(
 
-            skipped: inout [Async.Waiter.Resumption]
+            skipped: inout Array<Async.Waiter.Resumption>
         ) -> Pool.Bounded<Resource>.Waiter.Entry? {
 
             var flagged = Async.Waiter.Queue.Drain<Pool.Bounded<Resource>.Waiter.Flagged>()
@@ -288,9 +288,9 @@
 
         @usableFromInline
 
-        mutating func reapFlaggedWaiters() -> [Async.Waiter.Resumption] {
+        mutating func reapFlaggedWaiters() -> Array<Async.Waiter.Resumption> {
 
-            var pending = [Async.Waiter.Resumption](initialCapacity: 0)
+            var pending = Array<Async.Waiter.Resumption>(initialCapacity: 0)
 
             let currentLifecycle = lifecycle
 
@@ -321,9 +321,9 @@
 
         mutating func fail(
             waitersWith error: Pool.Lifecycle.Error
-        ) -> [Async.Waiter.Resumption] {
+        ) -> Array<Async.Waiter.Resumption> {
 
-            var pending = [Async.Waiter.Resumption](initialCapacity: 0)
+            var pending = Array<Async.Waiter.Resumption>(initialCapacity: 0)
 
             while let waiter = dequeueEligibleWaiter(skipped: &pending) {
                 pending.append(waiter.resumption(with: .failure(error)))

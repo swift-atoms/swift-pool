@@ -71,7 +71,7 @@
 
                 state.metrics.releases += 1
 
-                var skipped = [Async.Waiter.Resumption](initialCapacity: 0)
+                var skipped = Array<Async.Waiter.Resumption>(initialCapacity: 0)
 
                 if let waiter = state.dequeueEligibleWaiter(skipped: &skipped) {
 
@@ -155,7 +155,7 @@
         @usableFromInline
         func pumpWaiters() {
 
-            var pending: [Async.Waiter.Resumption] = _state.withLock { state in
+            var pending: Array<Async.Waiter.Resumption> = _state.withLock { state in
                 state.reapFlaggedWaiters()
             }
 
