@@ -27,7 +27,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-atoms/swift-dimension.git",
+            url: "https://github.com/swift-atoms/swift-tagged.git",
             branch: "main"
         )
     ],
@@ -35,7 +35,7 @@ let package = Package(
         .target(
             name: "Pool",
             dependencies: [
-                .product(name: "Dimension", package: "swift-dimension")
+                .product(name: "Tagged", package: "swift-tagged")
             ]
         ),
         .target(
