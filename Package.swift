@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-pool-primitives",
+    name: "swift-pool",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -19,52 +19,52 @@ let package = Package(
         ),
 
         .library(
-            name: "Pool Scope Primitives",
-            targets: ["Pool Scope Primitives"]
+            name: "Pool Scope",
+            targets: ["Pool Scope"]
         ),
         .library(
-            name: "Pool ID Primitives",
-            targets: ["Pool ID Primitives"]
+            name: "Pool ID",
+            targets: ["Pool ID"]
         ),
         .library(
-            name: "Pool Error Primitives",
-            targets: ["Pool Error Primitives"]
+            name: "Pool Error",
+            targets: ["Pool Error"]
         ),
         .library(
-            name: "Pool Capacity Primitives",
-            targets: ["Pool Capacity Primitives"]
-        ),
-
-        .library(
-            name: "Pool Lifecycle Primitives",
-            targets: ["Pool Lifecycle Primitives"]
-        ),
-        .library(
-            name: "Pool Metrics Primitives",
-            targets: ["Pool Metrics Primitives"]
+            name: "Pool Capacity",
+            targets: ["Pool Capacity"]
         ),
 
         .library(
-            name: "Pool Acquire Primitives",
-            targets: ["Pool Acquire Primitives"]
+            name: "Pool Lifecycle",
+            targets: ["Pool Lifecycle"]
         ),
         .library(
-            name: "Pool Release Primitives",
-            targets: ["Pool Release Primitives"]
-        ),
-
-        .library(
-            name: "Pool Bounded Primitives",
-            targets: ["Pool Bounded Primitives"]
+            name: "Pool Metrics",
+            targets: ["Pool Metrics"]
         ),
 
         .library(
-            name: "Pool Primitives",
-            targets: ["Pool Primitives"]
+            name: "Pool Acquire",
+            targets: ["Pool Acquire"]
         ),
         .library(
-            name: "Pool Primitives Test Support",
-            targets: ["Pool Primitives Test Support"]
+            name: "Pool Release",
+            targets: ["Pool Release"]
+        ),
+
+        .library(
+            name: "Pool Bounded",
+            targets: ["Pool Bounded"]
+        ),
+
+        .library(
+            name: "Pool",
+            targets: ["Pool"]
+        ),
+        .library(
+            name: "Pool Test Support",
+            targets: ["Pool Test Support"]
         ),
     ],
     traits: [
@@ -76,79 +76,79 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-async-primitives.git",
+            url: "https://github.com/swift-molecules/swift-async.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-queue-primitives.git",
+            url: "https://github.com/swift-molecules/swift-queue.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-stack-primitives.git",
+            url: "https://github.com/swift-molecules/swift-stack.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-array-primitives.git",
+            url: "https://github.com/swift-molecules/swift-array.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-fixed-primitives.git",
+            url: "https://github.com/swift-molecules/swift-fixed.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-column-primitives.git",
+            url: "https://github.com/swift-molecules/swift-column.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-buffer-linear-primitives.git",
+            url: "https://github.com/swift-molecules/swift-buffer-linear.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ownership-shared-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ownership-shared.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-storage-primitives.git",
+            url: "https://github.com/swift-molecules/swift-storage.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-memory-heap-primitives.git",
+            url: "https://github.com/swift-molecules/swift-memory-heap.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-memory-allocation-primitives.git",
+            url: "https://github.com/swift-molecules/swift-memory-allocation.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-buffer-primitives.git",
+            url: "https://github.com/swift-molecules/swift-buffer.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-tagged-collection-primitives.git",
+            url: "https://github.com/swift-molecules/swift-tagged-collection.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-dimension-primitives.git",
+            url: "https://github.com/swift-molecules/swift-dimension.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-ownership-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ownership.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-effect-primitives.git",
+            url: "https://github.com/swift-molecules/swift-effect.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-index-primitives.git",
+            url: "https://github.com/swift-molecules/swift-index.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-iterator-primitives.git",
+            url: "https://github.com/swift-molecules/swift-iterator.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-either-primitives.git",
+            url: "https://github.com/swift-molecules/swift-either.git",
             branch: "main"
         ),
     ],
@@ -160,206 +160,206 @@ let package = Package(
         ),
 
         .target(
-            name: "Pool Scope Primitives",
+            name: "Pool Scope",
             dependencies: [
                 "Pool Primitive",
-                .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
-                .product(name: "Async Primitives", package: "swift-async-primitives"),
+                .product(name: "Dimension", package: "swift-dimension"),
+                .product(name: "Async", package: "swift-async"),
             ]
         ),
         .target(
-            name: "Pool ID Primitives",
+            name: "Pool ID",
             dependencies: [
                 "Pool Primitive",
-                "Pool Scope Primitives",
-                .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
+                "Pool Scope",
+                .product(name: "Dimension", package: "swift-dimension"),
             ]
         ),
         .target(
-            name: "Pool Error Primitives",
+            name: "Pool Error",
             dependencies: [
                 "Pool Primitive",
-                "Pool Scope Primitives",
-                "Pool ID Primitives",
+                "Pool Scope",
+                "Pool ID",
             ]
         ),
         .target(
-            name: "Pool Capacity Primitives",
+            name: "Pool Capacity",
             dependencies: [
                 "Pool Primitive",
-                "Pool Error Primitives",
+                "Pool Error",
             ]
         ),
 
         .target(
-            name: "Pool Lifecycle Primitives",
+            name: "Pool Lifecycle",
             dependencies: [
                 "Pool Primitive",
-                .product(name: "Async Primitives", package: "swift-async-primitives"),
+                .product(name: "Async", package: "swift-async"),
             ]
         ),
         .target(
-            name: "Pool Metrics Primitives",
+            name: "Pool Metrics",
             dependencies: [
                 "Pool Primitive"
             ]
         ),
 
         .target(
-            name: "Pool Acquire Primitives",
+            name: "Pool Acquire",
             dependencies: [
                 "Pool Primitive",
-                "Pool Scope Primitives",
-                "Pool Error Primitives",
-                .product(name: "Effect Primitives", package: "swift-effect-primitives"),
-                .product(name: "Ownership Primitives", package: "swift-ownership-primitives"),
+                "Pool Scope",
+                "Pool Error",
+                .product(name: "Effect", package: "swift-effect"),
+                .product(name: "Ownership", package: "swift-ownership"),
             ]
         ),
         .target(
-            name: "Pool Release Primitives",
+            name: "Pool Release",
             dependencies: [
                 "Pool Primitive",
-                "Pool Scope Primitives",
-                "Pool ID Primitives",
-                .product(name: "Effect Primitives", package: "swift-effect-primitives"),
-                .product(name: "Ownership Primitives", package: "swift-ownership-primitives"),
+                "Pool Scope",
+                "Pool ID",
+                .product(name: "Effect", package: "swift-effect"),
+                .product(name: "Ownership", package: "swift-ownership"),
             ]
         ),
 
         .target(
-            name: "Pool Bounded Primitives",
+            name: "Pool Bounded",
             dependencies: [
                 .target(name: "Pool Primitive", condition: .when(traits: ["Concurrency"])),
-                .target(name: "Pool Scope Primitives", condition: .when(traits: ["Concurrency"])),
-                .target(name: "Pool ID Primitives", condition: .when(traits: ["Concurrency"])),
-                .target(name: "Pool Error Primitives", condition: .when(traits: ["Concurrency"])),
+                .target(name: "Pool Scope", condition: .when(traits: ["Concurrency"])),
+                .target(name: "Pool ID", condition: .when(traits: ["Concurrency"])),
+                .target(name: "Pool Error", condition: .when(traits: ["Concurrency"])),
                 .target(
-                    name: "Pool Capacity Primitives",
+                    name: "Pool Capacity",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .target(
-                    name: "Pool Lifecycle Primitives",
+                    name: "Pool Lifecycle",
                     condition: .when(traits: ["Concurrency"])
                 ),
-                .target(name: "Pool Metrics Primitives", condition: .when(traits: ["Concurrency"])),
+                .target(name: "Pool Metrics", condition: .when(traits: ["Concurrency"])),
                 .product(
-                    name: "Column Primitives",
-                    package: "swift-column-primitives",
+                    name: "Column",
+                    package: "swift-column",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Buffer Linear Bounded Primitive",
-                    package: "swift-buffer-linear-primitives",
+                    package: "swift-buffer-linear",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Buffer Linear Primitive",
-                    package: "swift-buffer-linear-primitives",
+                    package: "swift-buffer-linear",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Ownership Shared Primitive",
-                    package: "swift-ownership-shared-primitives",
+                    package: "swift-ownership-shared",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Storage Contiguous Primitives",
-                    package: "swift-storage-primitives",
+                    name: "Storage Contiguous",
+                    package: "swift-storage",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Memory Heap Primitives",
-                    package: "swift-memory-heap-primitives",
+                    name: "Memory Heap",
+                    package: "swift-memory-heap",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Memory Allocator Primitive",
-                    package: "swift-memory-allocation-primitives",
+                    package: "swift-memory-allocation",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Buffer Primitive",
-                    package: "swift-buffer-primitives",
+                    package: "swift-buffer",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Stack Primitives",
-                    package: "swift-stack-primitives",
+                    name: "Stack",
+                    package: "swift-stack",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Array Primitive",
-                    package: "swift-array-primitives",
+                    package: "swift-array",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Array Primitives",
-                    package: "swift-array-primitives",
+                    name: "Array",
+                    package: "swift-array",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Fixed Primitives",
-                    package: "swift-fixed-primitives",
+                    name: "Fixed",
+                    package: "swift-fixed",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Index Primitives",
-                    package: "swift-index-primitives",
+                    name: "Index",
+                    package: "swift-index",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Iterable",
-                    package: "swift-iterator-primitives",
+                    package: "swift-iterator",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Tagged Collection Primitives",
-                    package: "swift-tagged-collection-primitives",
+                    name: "Tagged Collection",
+                    package: "swift-tagged-collection",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Async Primitives",
-                    package: "swift-async-primitives",
+                    name: "Async",
+                    package: "swift-async",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Async Waiter Primitives",
-                    package: "swift-async-primitives",
+                    name: "Async Waiter",
+                    package: "swift-async",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Async Mutex Primitives",
-                    package: "swift-async-primitives",
+                    name: "Async Mutex",
+                    package: "swift-async",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
                     name: "Queue Primitive",
-                    package: "swift-queue-primitives",
+                    package: "swift-queue",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Queue Primitives",
-                    package: "swift-queue-primitives",
+                    name: "Queue",
+                    package: "swift-queue",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Async Promise Primitives",
-                    package: "swift-async-primitives",
+                    name: "Async Promise",
+                    package: "swift-async",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Dimension Primitives",
-                    package: "swift-dimension-primitives",
+                    name: "Dimension",
+                    package: "swift-dimension",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Ownership Primitives",
-                    package: "swift-ownership-primitives",
+                    name: "Ownership",
+                    package: "swift-ownership",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Either Primitives",
-                    package: "swift-either-primitives",
+                    name: "Either",
+                    package: "swift-either",
                     condition: .when(traits: ["Concurrency"])
                 ),
             ],
@@ -369,18 +369,18 @@ let package = Package(
         ),
 
         .target(
-            name: "Pool Primitives",
+            name: "Pool",
             dependencies: [
                 "Pool Primitive",
-                "Pool Scope Primitives",
-                "Pool ID Primitives",
-                "Pool Error Primitives",
-                "Pool Capacity Primitives",
-                "Pool Lifecycle Primitives",
-                "Pool Metrics Primitives",
-                "Pool Acquire Primitives",
-                "Pool Release Primitives",
-                .target(name: "Pool Bounded Primitives", condition: .when(traits: ["Concurrency"])),
+                "Pool Scope",
+                "Pool ID",
+                "Pool Error",
+                "Pool Capacity",
+                "Pool Lifecycle",
+                "Pool Metrics",
+                "Pool Acquire",
+                "Pool Release",
+                .target(name: "Pool Bounded", condition: .when(traits: ["Concurrency"])),
             ],
             swiftSettings: [
                 .define("POOL_CONCURRENCY", .when(traits: ["Concurrency"]))
@@ -388,28 +388,28 @@ let package = Package(
         ),
 
         .target(
-            name: "Pool Primitives Test Support",
+            name: "Pool Test Support",
             dependencies: [
-                "Pool Primitives",
-                .product(name: "Index Primitives Test Support", package: "swift-index-primitives"),
+                "Pool",
+                .product(name: "Index Test Support", package: "swift-index"),
             ],
             path: "Tests/Support"
         ),
 
         .testTarget(
-            name: "Pool Primitives Tests",
+            name: "Pool Tests",
             dependencies: [
-                "Pool Primitives",
-                "Pool Primitives Test Support",
-                .product(name: "Async Primitives", package: "swift-async-primitives"),
-                .product(name: "Array Primitives", package: "swift-array-primitives"),
-                .product(name: "Fixed Primitives", package: "swift-fixed-primitives"),
+                "Pool",
+                "Pool Test Support",
+                .product(name: "Async", package: "swift-async"),
+                .product(name: "Array", package: "swift-array"),
+                .product(name: "Fixed", package: "swift-fixed"),
                 .product(
-                    name: "Tagged Collection Primitives",
-                    package: "swift-tagged-collection-primitives"
+                    name: "Tagged Collection",
+                    package: "swift-tagged-collection"
                 ),
             ],
-            path: "Tests/Pool Primitives Tests"
+            path: "Tests/Pool Tests"
         ),
     ],
     swiftLanguageModes: [.v6]

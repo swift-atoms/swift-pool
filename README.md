@@ -1,7 +1,7 @@
-# Pool Primitives
+# Pool
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
-[![CI](https://github.com/swift-primitives/swift-pool-primitives/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-primitives/swift-pool-primitives/actions/workflows/ci.yml)
+[![CI](https://github.com/swift-molecules/swift-pool/actions/workflows/ci.yml/badge.svg)](https://github.com/swift-molecules/swift-pool/actions/workflows/ci.yml)
 
 `Pool.Bounded<Resource>` provides bounded asynchronous resource ownership with explicit reuse or invalidation and joined asynchronous disposal.
 
@@ -20,7 +20,7 @@
 ## Quick Start
 
 ```swift
-import Pool_Primitives
+import Pool
 
 final class Connection {
     var isHealthy = true
@@ -50,7 +50,7 @@ await pool.shutdown()
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-primitives/swift-pool-primitives.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-pool.git", branch: "main")
 ]
 ```
 
@@ -58,7 +58,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Pool Primitives", package: "swift-pool-primitives")
+        .product(name: "Pool", package: "swift-pool")
     ]
 )
 ```
@@ -69,15 +69,15 @@ choice explicit on its package dependency:
 
 ```swift
 .package(
-    url: "https://github.com/swift-primitives/swift-pool-primitives.git",
+    url: "https://github.com/swift-molecules/swift-pool.git",
     branch: "main",
     traits: ["Concurrency"]
 )
 ```
 
 Freestanding consumers that do not use asynchronous bounded pooling can disable
-default traits with `traits: []`. In that graph, `Pool Primitives` does not
-depend on or re-export `Pool Bounded Primitives`, and the bounded target does not
+default traits with `traits: []`. In that graph, `Pool` does not
+depend on or re-export `Pool Bounded`, and the bounded target does not
 pull its concurrency dependencies.
 
 The package is pre-1.0 — depend on `branch: "main"` until `0.1.0` is tagged. Requires Swift 6.3 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 (or the corresponding Linux / Windows toolchain).
@@ -88,8 +88,8 @@ The package is pre-1.0 — depend on `branch: "main"` until `0.1.0` is tagged. R
 
 | Product | Contents | When to import |
 |---------|----------|----------------|
-| `Pool Primitives` | Umbrella — the `Pool` namespace and metrics; also `Pool.Bounded` when `Concurrency` is enabled | Most consumers |
-| `Pool Bounded Primitives` | `Pool.Bounded<Resource>` when `Concurrency` is enabled | Just the bounded pool |
+| `Pool` | Umbrella — the `Pool` namespace and metrics; also `Pool.Bounded` when `Concurrency` is enabled | Most consumers |
+| `Pool Bounded` | `Pool.Bounded<Resource>` when `Concurrency` is enabled | Just the bounded pool |
 
 ---
 
@@ -132,7 +132,7 @@ returned.
 
 ### Dependencies
 
-- [`swift-async-primitives`](https://github.com/swift-primitives/swift-async-primitives) — the async mutex and gate the pool coordinates acquisition and shutdown with when `Concurrency` is enabled.
+- [`swift-async`](https://github.com/swift-molecules/swift-async) — the async mutex and gate the pool coordinates acquisition and shutdown with when `Concurrency` is enabled.
 
 ---
 
