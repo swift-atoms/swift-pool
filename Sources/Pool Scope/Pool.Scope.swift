@@ -1,4 +1,5 @@
-public import Tagged
+internal import Async
+public import Dimension
 
 #if !hasFeature(Embedded)
     import Synchronization

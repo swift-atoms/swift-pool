@@ -1,4 +1,4 @@
-public import Tagged
+public import Dimension
 
 extension Pool {
 
