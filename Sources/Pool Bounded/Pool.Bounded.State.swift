@@ -13,7 +13,7 @@
     internal import Index
     internal import Iterable
     internal import Memory_Allocator_Primitive
-    internal import Memory_Heap
+    internal import Memory
     internal import Ownership_Shared_Primitive
     @_spi(Internal) internal import Pool_ID
     @_spi(Internal) internal import Pool_Metrics

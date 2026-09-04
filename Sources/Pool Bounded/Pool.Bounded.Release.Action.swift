@@ -8,7 +8,7 @@
     internal import Column
     internal import Fixed
     internal import Memory_Allocator_Primitive
-    internal import Memory_Heap
+    internal import Memory
     internal import Ownership_Shared_Primitive
     internal import Storage_Contiguous
 

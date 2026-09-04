@@ -112,7 +112,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-memory-heap.git",
+            url: "https://github.com/swift-atoms/swift-memory.git",
             branch: "main"
         ),
         .package(
@@ -268,8 +268,8 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Memory Heap",
-                    package: "swift-memory-heap",
+                    name: "Memory",
+                    package: "swift-memory",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(

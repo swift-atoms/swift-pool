@@ -17,7 +17,7 @@
     internal import Buffer_Linear_Primitive
     internal import Ownership_Shared_Primitive
     internal import Storage_Contiguous
-    internal import Memory_Heap
+    internal import Memory
     internal import Memory_Allocator_Primitive
     internal import Buffer_Primitive
 
