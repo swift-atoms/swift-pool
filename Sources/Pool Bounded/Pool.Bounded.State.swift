@@ -11,7 +11,7 @@
     internal import Dimension
     public import Fixed
     internal import Index
-    internal import Iterable
+    internal import Iterator
     internal import Memory_Allocator_Primitive
     internal import Memory
     internal import Ownership_Shared_Primitive
