@@ -6,7 +6,7 @@
     public import Async_Waiter
     internal import Buffer_Linear_Bounded_Primitive
     internal import Buffer_Linear_Primitive
-    internal import Buffer_Primitive
+    internal import Buffer
     internal import Column
     internal import Dimension
     public import Fixed

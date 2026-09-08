@@ -19,7 +19,7 @@
     internal import Storage_Contiguous
     internal import Memory
     internal import Memory_Allocator_Primitive
-    internal import Buffer_Primitive
+    internal import Buffer
 
     extension Pool {
 

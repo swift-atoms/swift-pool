@@ -75,8 +75,9 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/swift-molecules/swift-async-waiter.git", branch: "main"),
         .package(
-            url: "https://github.com/swift-molecules/swift-async.git",
+            url: "https://github.com/swift-atoms/swift-async.git",
             branch: "main"
         ),
         .package(
@@ -120,7 +121,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-buffer.git",
+            url: "https://github.com/swift-atoms/swift-buffer.git",
             branch: "main"
         ),
         .package(
@@ -278,7 +279,7 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Buffer Primitive",
+                    name: "Buffer",
                     package: "swift-buffer",
                     condition: .when(traits: ["Concurrency"])
                 ),
@@ -324,7 +325,7 @@ let package = Package(
                 ),
                 .product(
                     name: "Async Waiter",
-                    package: "swift-async",
+                    package: "swift-async-waiter",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
