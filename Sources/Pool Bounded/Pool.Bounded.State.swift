@@ -4,17 +4,17 @@
     public import Async
     internal import Async_Promise
     public import Async_Waiter
-    internal import Buffer_Linear_Bounded_Primitive
-    internal import Buffer_Linear_Primitive
-    internal import Buffer
+    public import Buffer_Linear_Bounded_Primitive
+    public import Buffer_Linear_Primitive
+    public import Buffer
     internal import Buffer_Ring_Primitive
     internal import Memory_Allocator_Pool
     internal import Memory_Pool
     internal import Memory_Allocator
     internal import Memory
     internal import Ownership_Shared_Primitive
-    internal import Storage
-    internal import Store
+    public import Storage
+    public import Store
     internal import Spatial
     public import Fixed
     internal import Index
