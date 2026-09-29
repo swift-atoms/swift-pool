@@ -74,6 +74,7 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/swift-atoms/swift-ordinal.git", branch: "main"),
         .package(url: "https://github.com/swift-molecules/swift-async-waiter.git", branch: "main"),
         .package(
             url: "https://github.com/swift-atoms/swift-async.git",
@@ -270,6 +271,7 @@ let package = Package(
                     package: "swift-index",
                     condition: .when(traits: ["Concurrency"])
                 ),
+                .product(name: "Ordinal", package: "swift-ordinal", condition: .when(traits: ["Concurrency"])),
                 .product(
                     name: "Iterator",
                     package: "swift-iterator",

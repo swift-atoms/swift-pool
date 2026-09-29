@@ -18,6 +18,7 @@
     internal import Spatial
     public import Fixed
     internal import Index
+    internal import Ordinal
     internal import Iterator
     @_spi(Internal) internal import Pool_ID
     @_spi(Internal) internal import Pool_Metrics
@@ -235,10 +236,11 @@
 
         @usableFromInline
         func findEmptySlot() -> Pool.Bounded<Resource>.Slot.Index? {
-            slots.first { slot in
-                if case .empty = slot.state { return true }
-                return false
-            }?.index
+            for position in 0..<Int(bitPattern: slots.count) {
+                let slot = slots[Index::Index<Pool.Bounded<Resource>.Slot>(Ordinal(UInt(position)))]
+                if case .empty = slot.state { return slot.index }
+            }
+            return nil
         }
     }
 
