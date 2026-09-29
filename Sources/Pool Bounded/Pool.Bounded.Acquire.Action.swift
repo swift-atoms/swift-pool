@@ -1,4 +1,4 @@
-#if POOL_CONCURRENCY
+#if Concurrency
 
     extension Pool.Bounded.Acquire where Resource: ~Copyable {
 
@@ -7,7 +7,7 @@
 
             case immediate(Pool.Bounded<Resource>.Slot.Index, Pool.ID)
 
-            #if POOL_CONCURRENCY
+            #if Concurrency
 
                 case create(Pool.Bounded<Resource>.Slot.Index, Pool.ID)
             #endif

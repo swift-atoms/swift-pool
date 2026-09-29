@@ -1,3 +1,4 @@
+#if Concurrency
 import Async
 import Either
 import Pool
@@ -406,4 +407,5 @@ extension `Pool.Bounded Tests`.`Edge Case` {
             #expect(pool._state.withLock { $0.lifecycle } == .closed)
         }
     }
+#endif
 #endif

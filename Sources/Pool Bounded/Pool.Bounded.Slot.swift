@@ -1,5 +1,5 @@
-#if POOL_CONCURRENCY
-    public import Dimension
+#if Concurrency
+    public import Spatial
 
     extension Pool.Bounded where Resource: ~Copyable {
 

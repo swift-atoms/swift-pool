@@ -1,7 +1,7 @@
-#if POOL_CONCURRENCY
+#if Concurrency
     public import Async
     public import Async_Waiter
-    internal import Dimension
+    internal import Spatial
 
     extension Pool.Bounded where Resource: ~Copyable {
 

@@ -1,9 +1,9 @@
-#if POOL_CONCURRENCY
+#if Concurrency
 
     public import Either
     internal import Fixed
     internal import Ownership
-    internal import Tagged_Collection
+    internal import Collection
 
     extension Pool.Bounded where Resource: ~Copyable {
 

@@ -1,4 +1,4 @@
-#if POOL_CONCURRENCY
+#if Concurrency
     extension Pool.Bounded where Resource: ~Copyable {
 
         @usableFromInline

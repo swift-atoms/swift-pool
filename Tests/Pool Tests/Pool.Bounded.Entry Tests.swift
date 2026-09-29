@@ -1,3 +1,4 @@
+#if Concurrency
 import Pool
 import Pool_Test_Support
 import Testing
@@ -66,3 +67,4 @@ extension `Pool.Bounded.Entry Tests`.`Edge Case` {
         #expect(entry.isEmpty)
     }
 }
+#endif

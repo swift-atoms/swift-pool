@@ -1,4 +1,4 @@
-#if POOL_CONCURRENCY
+#if Concurrency
 
     internal import Array_Primitive
     internal import Array
@@ -7,7 +7,7 @@
     internal import Async_Waiter
     internal import Fixed
     internal import Ownership
-    internal import Tagged_Collection
+    internal import Collection
 
     internal import Synchronization
 

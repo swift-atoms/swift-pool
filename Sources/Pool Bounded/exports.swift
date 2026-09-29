@@ -1,7 +1,7 @@
-#if POOL_CONCURRENCY
+#if Concurrency
 
     @_exported public import Async
-    @_exported public import Dimension
+    @_exported public import Spatial
     @_exported public import Index
     @_exported public import Ownership
     @_exported public import Pool_Capacity

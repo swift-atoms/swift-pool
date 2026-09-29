@@ -1,3 +1,4 @@
+#if Concurrency
 import Pool
 import Pool_Test_Support
 import Testing
@@ -76,3 +77,4 @@ extension `Pool.Bounded.Slot.State Tests`.Unit {
         }
     }
 }
+#endif

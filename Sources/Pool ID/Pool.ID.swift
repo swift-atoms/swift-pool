@@ -1,4 +1,4 @@
-public import Dimension
+public import Spatial
 
 extension Pool {
 

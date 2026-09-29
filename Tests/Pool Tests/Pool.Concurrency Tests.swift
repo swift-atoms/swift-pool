@@ -1,3 +1,4 @@
+#if Concurrency
 import Async_Mutex
 import Either
 import Fixed
@@ -241,4 +242,5 @@ extension `Pool.Bounded Tests` {
             await pool.shutdown()
         }
     }
+#endif
 #endif

@@ -8,6 +8,6 @@
 @_exported public import Pool_Release
 @_exported public import Pool_Scope
 
-#if POOL_CONCURRENCY
+#if Concurrency
     @_exported public import Pool_Bounded
 #endif

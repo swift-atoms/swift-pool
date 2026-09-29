@@ -68,7 +68,6 @@ let package = Package(
         ),
     ],
     traits: [
-        .default(enabledTraits: ["Concurrency"]),
         .trait(
             name: "Concurrency",
             description: "Enable asynchronous bounded resource pooling."
@@ -81,7 +80,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-queue.git",
+            url: "https://github.com/swift-atoms/swift-queue.git",
             branch: "main"
         ),
         .package(
@@ -93,11 +92,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-fixed.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-column.git",
+            url: "https://github.com/swift-atoms/swift-fixed.git",
             branch: "main"
         ),
         .package(
@@ -109,9 +104,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-storage.git",
-            branch: "main"
-        ),
+            url: "https://github.com/swift-atoms/swift-storage.git", branch: "main", traits: [.trait(name: "Generational", condition: .when(traits: ["Concurrency"])), .trait(name: "Memory", condition: .when(traits: ["Concurrency"]))]),
         .package(
             url: "https://github.com/swift-atoms/swift-memory.git",
             branch: "main"
@@ -125,33 +118,32 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-tagged-collection.git",
+            url: "https://github.com/swift-atoms/swift-spatial.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-dimension.git",
+            url: "https://github.com/swift-atoms/swift-ownership.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-ownership.git",
+            url: "https://github.com/swift-atoms/swift-effect.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-effect.git",
+            url: "https://github.com/swift-atoms/swift-index.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-index.git",
+            url: "https://github.com/swift-atoms/swift-iterator.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-iterator.git",
+            url: "https://github.com/swift-atoms/swift-either.git",
             branch: "main"
         ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-either.git",
-            branch: "main"
-        ),
+        .package(url: "https://github.com/swift-atoms/swift-collection.git", branch: "main", traits: ["TaggedCollection"]),
+        .package(url: "https://github.com/swift-molecules/swift-buffer-ring.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-store.git", branch: "main"),
     ],
     targets: [
 
@@ -164,7 +156,7 @@ let package = Package(
             name: "Pool Scope",
             dependencies: [
                 "Pool Primitive",
-                .product(name: "Dimension", package: "swift-dimension"),
+                .product(name: "Spatial", package: "swift-spatial"),
                 .product(name: "Async", package: "swift-async"),
             ]
         ),
@@ -173,7 +165,7 @@ let package = Package(
             dependencies: [
                 "Pool Primitive",
                 "Pool Scope",
-                .product(name: "Dimension", package: "swift-dimension"),
+                .product(name: "Spatial", package: "swift-spatial"),
             ]
         ),
         .target(
@@ -243,46 +235,16 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .target(name: "Pool Metrics", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Buffer Linear Bounded Primitive", package: "swift-buffer-linear", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Buffer Linear Primitive", package: "swift-buffer-linear", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Ownership Shared Primitive", package: "swift-ownership-shared", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Memory", package: "swift-memory", condition: .when(traits: ["Concurrency"])),
                 .product(
-                    name: "Column",
-                    package: "swift-column",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Buffer Linear Bounded Primitive",
-                    package: "swift-buffer-linear",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Buffer Linear Primitive",
-                    package: "swift-buffer-linear",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Ownership Shared Primitive",
-                    package: "swift-ownership-shared",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Storage Contiguous",
-                    package: "swift-storage",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Memory",
-                    package: "swift-memory",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Memory Allocator Primitive",
+                    name: "Memory Allocator",
                     package: "swift-memory-allocation",
                     condition: .when(traits: ["Concurrency"])
                 ),
-                .product(
-                    name: "Buffer",
-                    package: "swift-buffer",
-                    condition: .when(traits: ["Concurrency"])
-                ),
+                .product(name: "Buffer", package: "swift-buffer", condition: .when(traits: ["Concurrency"])),
                 .product(
                     name: "Stack",
                     package: "swift-stack",
@@ -309,13 +271,8 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Iterable",
+                    name: "Iterator",
                     package: "swift-iterator",
-                    condition: .when(traits: ["Concurrency"])
-                ),
-                .product(
-                    name: "Tagged Collection",
-                    package: "swift-tagged-collection",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
@@ -349,8 +306,8 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Dimension",
-                    package: "swift-dimension",
+                    name: "Spatial",
+                    package: "swift-spatial",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
@@ -363,9 +320,13 @@ let package = Package(
                     package: "swift-either",
                     condition: .when(traits: ["Concurrency"])
                 ),
-            ],
-            swiftSettings: [
-                .define("POOL_CONCURRENCY", .when(traits: ["Concurrency"]))
+                .product(name: "Collection", package: "swift-collection"),
+                .product(name: "Buffer Ring Primitive", package: "swift-buffer-ring", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Memory Allocator Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Memory Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Memory Allocator", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Storage", package: "swift-storage", condition: .when(traits: ["Concurrency"])),
+                .product(name: "Store", package: "swift-store", condition: .when(traits: ["Concurrency"])),
             ]
         ),
 
@@ -382,9 +343,6 @@ let package = Package(
                 "Pool Acquire",
                 "Pool Release",
                 .target(name: "Pool Bounded", condition: .when(traits: ["Concurrency"])),
-            ],
-            swiftSettings: [
-                .define("POOL_CONCURRENCY", .when(traits: ["Concurrency"]))
             ]
         ),
 
@@ -405,10 +363,7 @@ let package = Package(
                 .product(name: "Async", package: "swift-async"),
                 .product(name: "Array", package: "swift-array"),
                 .product(name: "Fixed", package: "swift-fixed"),
-                .product(
-                    name: "Tagged Collection",
-                    package: "swift-tagged-collection"
-                ),
+                .product(name: "Collection", package: "swift-collection"),
             ],
             path: "Tests/Pool Tests"
         ),

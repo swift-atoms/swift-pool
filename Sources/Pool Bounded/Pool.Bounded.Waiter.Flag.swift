@@ -1,4 +1,4 @@
-#if POOL_CONCURRENCY
+#if Concurrency
     public import Async
     public import Async_Waiter
 

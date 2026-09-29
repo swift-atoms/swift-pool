@@ -1,4 +1,4 @@
-#if POOL_CONCURRENCY
+#if Concurrency
 
     internal import Array_Primitive
     internal import Async_Mutex

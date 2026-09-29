@@ -1,24 +1,27 @@
-#if POOL_CONCURRENCY
+#if Concurrency
     internal import Array_Primitive
     internal import Array
     internal import Async_Mutex
     internal import Async
     internal import Async_Waiter
-    internal import Dimension
+    internal import Spatial
     public import Index
     internal import Ownership
-    internal import Tagged_Collection
+    internal import Collection
 
     internal import Synchronization
-    internal import Column
-    internal import Fixed
-    internal import Buffer_Linear_Bounded_Primitive
-    internal import Buffer_Linear_Primitive
-    internal import Ownership_Shared_Primitive
-    internal import Storage_Contiguous
-    internal import Memory
-    internal import Memory_Allocator_Primitive
     internal import Buffer
+    internal import Buffer_Linear_Primitive
+    internal import Buffer_Linear_Bounded_Primitive
+    internal import Buffer_Ring_Primitive
+    internal import Memory_Allocator_Pool
+    internal import Memory_Pool
+    internal import Memory_Allocator
+    internal import Memory
+    internal import Ownership_Shared_Primitive
+    internal import Storage
+    internal import Store
+    internal import Fixed
 
     extension Pool.Bounded where Resource: ~Copyable {
 
