@@ -6,7 +6,7 @@
     internal import Async
     internal import Async_Promise
     internal import Async_Waiter
-    internal import Spatial
+    internal import Space
     internal import Ownership
     internal import Queue_Primitive
     internal import Queue

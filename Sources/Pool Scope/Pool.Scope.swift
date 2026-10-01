@@ -1,5 +1,5 @@
 internal import Async
-public import Spatial
+public import Space
 
 #if !hasFeature(Embedded)
     import Synchronization

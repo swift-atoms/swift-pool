@@ -15,7 +15,7 @@
     internal import Ownership_Shared_Primitive
     public import Storage
     public import Store
-    internal import Spatial
+    internal import Space
     public import Fixed
     internal import Index
     internal import Ordinal

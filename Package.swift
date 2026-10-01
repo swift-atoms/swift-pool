@@ -157,7 +157,7 @@ let package = Package(
             name: "Pool Scope",
             dependencies: [
                 "Pool Primitive",
-                .product(name: "Spatial", package: "swift-spatial"),
+                .product(name: "Space", package: "swift-spatial"),
                 .product(name: "Async", package: "swift-async"),
             ]
         ),
@@ -166,7 +166,7 @@ let package = Package(
             dependencies: [
                 "Pool Primitive",
                 "Pool Scope",
-                .product(name: "Spatial", package: "swift-spatial"),
+                .product(name: "Space", package: "swift-spatial"),
             ]
         ),
         .target(
@@ -308,7 +308,7 @@ let package = Package(
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
-                    name: "Spatial",
+                    name: "Space",
                     package: "swift-spatial",
                     condition: .when(traits: ["Concurrency"])
                 ),

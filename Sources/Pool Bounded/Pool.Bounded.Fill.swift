@@ -4,7 +4,7 @@
     internal import Async_Mutex
     internal import Async
     internal import Async_Waiter
-    internal import Spatial
+    internal import Space
     public import Index
     internal import Ownership
     internal import Collection
