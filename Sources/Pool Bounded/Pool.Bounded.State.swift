@@ -5,8 +5,8 @@
     internal import Async_Promise
     public import Async_Waiter
     public import Buffer_Linear_Bounded_Primitive
-    public import Buffer_Linear_Primitive
-    public import Buffer
+    import Buffer_Linear_Primitive
+    import Buffer
     internal import Buffer_Ring_Primitive
     internal import Memory_Allocator_Pool
     internal import Memory_Pool
@@ -14,7 +14,7 @@
     internal import Memory
     internal import Ownership_Shared_Primitive
     public import Storage
-    public import Store
+    import Store
     internal import Space
     public import Fixed
     internal import Index
