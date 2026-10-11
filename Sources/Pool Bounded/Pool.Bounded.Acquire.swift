@@ -27,7 +27,7 @@
 
     extension Pool.Bounded.Acquire where Resource: ~Copyable {
 
-        nonisolated(nonsending) public func callAsFunction<T: ~Copyable, E: Swift.Error>(
+        nonisolated(nonsending) public func callAsFunction<T: ~Copyable, E: Swift::Error>(
             _ body:
                 nonisolated(nonsending) (inout sending Resource) async throws(E)
                 -> sending Pool.Bounded<Resource>.Disposition<T>

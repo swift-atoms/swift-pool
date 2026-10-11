@@ -156,7 +156,7 @@ let package = Package(
         .target(
             name: "Pool Scope",
             dependencies: [
-                "Pool Primitive",
+                .target(name: "Pool Primitive"),
                 .product(name: "Space", package: "swift-spatial"),
                 .product(name: "Async", package: "swift-async"),
             ]
@@ -164,47 +164,47 @@ let package = Package(
         .target(
             name: "Pool ID",
             dependencies: [
-                "Pool Primitive",
-                "Pool Scope",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Scope"),
                 .product(name: "Space", package: "swift-spatial"),
             ]
         ),
         .target(
             name: "Pool Error",
             dependencies: [
-                "Pool Primitive",
-                "Pool Scope",
-                "Pool ID",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Scope"),
+                .target(name: "Pool ID"),
             ]
         ),
         .target(
             name: "Pool Capacity",
             dependencies: [
-                "Pool Primitive",
-                "Pool Error",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Error"),
             ]
         ),
 
         .target(
             name: "Pool Lifecycle",
             dependencies: [
-                "Pool Primitive",
+                .target(name: "Pool Primitive"),
                 .product(name: "Async", package: "swift-async"),
             ]
         ),
         .target(
             name: "Pool Metrics",
             dependencies: [
-                "Pool Primitive"
+                .target(name: "Pool Primitive")
             ]
         ),
 
         .target(
             name: "Pool Acquire",
             dependencies: [
-                "Pool Primitive",
-                "Pool Scope",
-                "Pool Error",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Scope"),
+                .target(name: "Pool Error"),
                 .product(name: "Effect", package: "swift-effect"),
                 .product(name: "Ownership", package: "swift-ownership"),
             ]
@@ -212,9 +212,9 @@ let package = Package(
         .target(
             name: "Pool Release",
             dependencies: [
-                "Pool Primitive",
-                "Pool Scope",
-                "Pool ID",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Scope"),
+                .target(name: "Pool ID"),
                 .product(name: "Effect", package: "swift-effect"),
                 .product(name: "Ownership", package: "swift-ownership"),
             ]
@@ -335,15 +335,15 @@ let package = Package(
         .target(
             name: "Pool",
             dependencies: [
-                "Pool Primitive",
-                "Pool Scope",
-                "Pool ID",
-                "Pool Error",
-                "Pool Capacity",
-                "Pool Lifecycle",
-                "Pool Metrics",
-                "Pool Acquire",
-                "Pool Release",
+                .target(name: "Pool Primitive"),
+                .target(name: "Pool Scope"),
+                .target(name: "Pool ID"),
+                .target(name: "Pool Error"),
+                .target(name: "Pool Capacity"),
+                .target(name: "Pool Lifecycle"),
+                .target(name: "Pool Metrics"),
+                .target(name: "Pool Acquire"),
+                .target(name: "Pool Release"),
                 .target(name: "Pool Bounded", condition: .when(traits: ["Concurrency"])),
             ]
         ),
@@ -351,7 +351,7 @@ let package = Package(
         .target(
             name: "Pool Test Support",
             dependencies: [
-                "Pool",
+                .target(name: "Pool"),
                 .product(name: "Index Test Support", package: "swift-index"),
             ],
             path: "Tests/Support"
@@ -360,8 +360,8 @@ let package = Package(
         .testTarget(
             name: "Pool Tests",
             dependencies: [
-                "Pool",
-                "Pool Test Support",
+                .target(name: "Pool"),
+                .target(name: "Pool Test Support"),
                 .product(name: "Async", package: "swift-async"),
                 .product(name: "Array", package: "swift-array"),
                 .product(name: "Fixed", package: "swift-fixed"),

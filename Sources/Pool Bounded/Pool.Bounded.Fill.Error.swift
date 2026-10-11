@@ -2,7 +2,7 @@
 
     extension Pool.Bounded.Fill where Resource: ~Copyable {
 
-        public enum Error: Swift.Error, Sendable, Equatable {
+        public enum Error: Swift::Error, Sendable, Equatable {
 
             case notEager
 

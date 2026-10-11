@@ -1,1 +1,1 @@
-struct Failure: Swift.Error, Equatable {}
+struct Failure: Swift::Error, Equatable {}
