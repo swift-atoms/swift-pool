@@ -134,7 +134,7 @@
                     state.transition(slot: slotIndex, to: .available(id))
                     state.metrics.fills += 1
 
-                    var skipped = Array<Async.Waiter.Resumption>(initialCapacity: 0)
+                    var skipped = [Async.Waiter.Resumption](initialCapacity: 0)
 
                     guard let waiter = state.dequeueEligibleWaiter(skipped: &skipped) else {
 

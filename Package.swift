@@ -71,7 +71,7 @@ let package = Package(
         .trait(
             name: "Concurrency",
             description: "Enable asynchronous bounded resource pooling."
-        ),
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/swift-atoms/swift-ordinal.git", branch: "main"),
@@ -105,7 +105,10 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-storage.git", branch: "main", traits: [.trait(name: "Generational", condition: .when(traits: ["Concurrency"])), .trait(name: "Memory", condition: .when(traits: ["Concurrency"]))]),
+            url: "https://github.com/swift-atoms/swift-storage.git",
+            branch: "main",
+            traits: [.trait(name: "Generational", condition: .when(traits: ["Concurrency"])), .trait(name: "Memory", condition: .when(traits: ["Concurrency"]))]
+        ),
         .package(
             url: "https://github.com/swift-atoms/swift-memory.git",
             branch: "main"
@@ -374,14 +377,15 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-        .enableExperimentalFeature("Lifetimes"),
-        .treatAllWarnings(as: .error),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }

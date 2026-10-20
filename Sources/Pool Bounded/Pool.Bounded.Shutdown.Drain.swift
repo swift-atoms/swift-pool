@@ -22,7 +22,7 @@
 
             case drain(
                 [(Pool.Bounded<Resource>.Slot.Index, Pool.ID)],
-                resumptions: Array<Async.Waiter.Resumption>
+                resumptions: [Async.Waiter.Resumption]
             )
             case alreadyShuttingDown
         }

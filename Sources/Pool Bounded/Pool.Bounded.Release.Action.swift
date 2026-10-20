@@ -22,12 +22,12 @@
 
             case handOff(
                 Async.Waiter.Resumption,
-                skipped: Array<Async.Waiter.Resumption>
+                skipped: [Async.Waiter.Resumption]
             )
 
-            case returnToPool(skipped: Array<Async.Waiter.Resumption>)
+            case returnToPool(skipped: [Async.Waiter.Resumption])
 
-            case dispose(skipped: Array<Async.Waiter.Resumption>)
+            case dispose(skipped: [Async.Waiter.Resumption])
         }
     }
 #endif

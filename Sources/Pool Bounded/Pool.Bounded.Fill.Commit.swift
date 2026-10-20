@@ -23,12 +23,12 @@
 
             case addToPool(
                 effect: Pool.Bounded<Resource>.Effect,
-                skipped: Array<Async.Waiter.Resumption>
+                skipped: [Async.Waiter.Resumption]
             )
 
             case handOff(
                 Async.Waiter.Resumption,
-                skipped: Array<Async.Waiter.Resumption>
+                skipped: [Async.Waiter.Resumption]
             )
 
             case dispose
