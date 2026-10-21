@@ -173,7 +173,7 @@
                     return .dispose
                 }
 
-                var skipped = [Async.Waiter.Resumption](initialCapacity: 0)
+                var skipped = Array<Async.Waiter.Resumption>(initialCapacity: 0)
                 guard let waiter = state.dequeueEligibleWaiter(skipped: &skipped) else {
                     state.transition(slot: slotIndex, to: .available(id))
                     state.pushAvailable(slotIndex)
