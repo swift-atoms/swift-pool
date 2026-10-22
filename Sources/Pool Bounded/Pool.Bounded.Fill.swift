@@ -1,4 +1,6 @@
 #if Concurrency
+    import _Concurrency
+
     internal import Array_Primitive
     internal import Array
     internal import Async_Mutex

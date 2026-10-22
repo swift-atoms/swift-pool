@@ -1,5 +1,7 @@
 #if Concurrency
 
+    import _Concurrency
+
     extension Pool.Bounded where Resource: ~Copyable {
 
         @usableFromInline

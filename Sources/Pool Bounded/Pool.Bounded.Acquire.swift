@@ -1,5 +1,7 @@
 #if Concurrency
 
+    import _Concurrency
+
     public import Either
     internal import Fixed
     internal import Ownership
