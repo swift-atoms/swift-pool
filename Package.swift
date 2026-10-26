@@ -122,7 +122,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-spatial.git",
+            url: "https://github.com/swift-atoms/swift-space.git",
             branch: "main"
         ),
         .package(
@@ -160,7 +160,7 @@ let package = Package(
             name: "Pool Scope",
             dependencies: [
                 .target(name: "Pool Primitive"),
-                .product(name: "Space", package: "swift-spatial"),
+                .product(name: "Space", package: "swift-space"),
                 .product(name: "Async", package: "swift-async"),
             ]
         ),
@@ -169,7 +169,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Pool Primitive"),
                 .target(name: "Pool Scope"),
-                .product(name: "Space", package: "swift-spatial"),
+                .product(name: "Space", package: "swift-space"),
             ]
         ),
         .target(
@@ -312,7 +312,7 @@ let package = Package(
                 ),
                 .product(
                     name: "Space",
-                    package: "swift-spatial",
+                    package: "swift-space",
                     condition: .when(traits: ["Concurrency"])
                 ),
                 .product(
