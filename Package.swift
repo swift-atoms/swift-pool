@@ -329,7 +329,6 @@ let package = Package(
                 .product(name: "Buffer Ring Primitive", package: "swift-buffer-ring", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Memory Allocator Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Memory Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
-                .product(name: "Memory Allocator", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Storage", package: "swift-storage", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Store", package: "swift-store", condition: .when(traits: ["Concurrency"])),
             ]
