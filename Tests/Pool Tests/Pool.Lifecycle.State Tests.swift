@@ -2,7 +2,9 @@ import Pool
 import Pool_Test_Support
 import Testing
 
-extension Pool.Lifecycle.State {
+enum `Pool.Lifecycle.State Tests` {}
+
+extension `Pool.Lifecycle.State Tests` {
     @Suite
     struct Test {
         @Suite struct Unit {}
@@ -10,7 +12,7 @@ extension Pool.Lifecycle.State {
     }
 }
 
-extension Pool.Lifecycle.State.Test.Unit {
+extension `Pool.Lifecycle.State Tests`.Test.Unit {
     @Test
     func `initial state is open`() {
         var state = Pool.Lifecycle.State.open
@@ -71,7 +73,7 @@ extension Pool.Lifecycle.State.Test.Unit {
     }
 }
 
-extension Pool.Lifecycle.State.Test.`Edge Case` {
+extension `Pool.Lifecycle.State Tests`.Test.`Edge Case` {
     @Test
     func `closed state cannot transition further`() {
         var state = Pool.Lifecycle.State.closed

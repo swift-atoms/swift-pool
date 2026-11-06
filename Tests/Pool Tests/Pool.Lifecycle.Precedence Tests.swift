@@ -2,7 +2,9 @@ import Pool
 import Pool_Test_Support
 import Testing
 
-extension Pool.Lifecycle.Precedence {
+enum `Pool.Lifecycle.Precedence Tests` {}
+
+extension `Pool.Lifecycle.Precedence Tests` {
     @Suite
     struct Test {
         @Suite struct Unit {}
@@ -10,7 +12,7 @@ extension Pool.Lifecycle.Precedence {
     }
 }
 
-extension Pool.Lifecycle.Precedence.Test.Unit {
+extension `Pool.Lifecycle.Precedence Tests`.Test.Unit {
     @Test
     func `success passes through when no flags set`() {
         let result = Pool.Lifecycle.Precedence.apply(
@@ -67,7 +69,7 @@ extension Pool.Lifecycle.Precedence.Test.Unit {
     }
 }
 
-extension Pool.Lifecycle.Precedence.Test.`Edge Case` {
+extension `Pool.Lifecycle.Precedence Tests`.Test.`Edge Case` {
     @Test
     func `all flags set returns shutdown`() {
         let result = Pool.Lifecycle.Precedence.apply(
