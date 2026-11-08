@@ -634,7 +634,7 @@
 #endif
 
 #if Concurrency
-    public import Async
+    import Async
     public import Async_Waiter
 
     extension Pool.Bounded where Resource: ~Copyable {
