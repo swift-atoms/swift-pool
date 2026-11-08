@@ -472,10 +472,10 @@
             let isReusable: Bool
             switch disposition {
             case .reusable:
-                if let check = _check {
-                    isReusable = check(&resource)
+                isReusable = if let check = _check {
+                    check(&resource)
                 } else {
-                    isReusable = true
+                    true
                 }
 
             case .invalid:
