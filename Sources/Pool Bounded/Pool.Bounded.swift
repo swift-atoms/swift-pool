@@ -2,9 +2,9 @@
     internal import Array_Primitive
     internal import Array
     public import Async_Mutex
-    internal import Async
+__DROP__
     public import Async_Promise
-    internal import Async_Waiter
+__DROP__
     internal import Ownership
     @_spi(Internal) internal import Pool_Capacity
     @_spi(Internal) internal import Pool_Scope
@@ -158,9 +158,9 @@
 
     internal import Array_Primitive
     internal import Array
-    internal import Async_Mutex
-    internal import Async
-    internal import Async_Waiter
+__DROP__
+__DROP__
+__DROP__
     internal import Fixed
     internal import Ownership
     internal import Collection
@@ -447,9 +447,9 @@
 #if Concurrency
     internal import Array_Primitive
     internal import Array
-    internal import Async_Mutex
-    internal import Async
-    internal import Async_Waiter
+__DROP__
+__DROP__
+__DROP__
     internal import Ownership
     internal import Collection
 
