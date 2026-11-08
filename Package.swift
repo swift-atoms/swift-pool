@@ -325,7 +325,7 @@ let package = Package(
                     package: "swift-either",
                     condition: .when(traits: ["Concurrency"])
                 ),
-                .product(name: "Collection", package: "swift-collection"),
+                .product(name: "Collection", package: "swift-collection", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Buffer Ring Primitive", package: "swift-buffer-ring", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Memory Allocator Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Memory Pool", package: "swift-memory-allocation", condition: .when(traits: ["Concurrency"])),
@@ -364,9 +364,9 @@ let package = Package(
             dependencies: [
                 .target(name: "Pool"),
                 .target(name: "Pool Test Support"),
-                .product(name: "Async", package: "swift-async"),
+                .product(name: "Async", package: "swift-async", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Array", package: "swift-array"),
-                .product(name: "Fixed", package: "swift-fixed"),
+                .product(name: "Fixed", package: "swift-fixed", condition: .when(traits: ["Concurrency"])),
                 .product(name: "Collection", package: "swift-collection"),
             ],
             path: "Tests/Pool Tests"
