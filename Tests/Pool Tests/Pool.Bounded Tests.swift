@@ -192,7 +192,7 @@
         }
 
         @Test
-        func `body cancellation is terminal`() async throws {
+        func `body cancellation keeps the resource the body returned as reusable`() async throws {
             let bodyStarted = Async.Gate()
             let releaseBody = Async.Gate()
             let destroyed = Mutex(0)
@@ -224,7 +224,57 @@
 
             let cancellation = await task.value
             #expect(cancellation == .cancelled)
-            #expect(destroyed.withLock { $0 } == 1)
+            #expect(destroyed.withLock { $0 } == 0)
+            #expect(pool.metrics.cancellations == 1)
+            try #require(pool.metrics.available == 1)
+            let after: Int = try await pool.acquire { .reusable($0 &+ 1) }
+            #expect(after == 2)
+            await pool.shutdown()
+        }
+
+        @Test
+        func `cancellation after obtaining the resource returns it to a pool without create`()
+            async throws
+        {
+            let cancelNext = Mutex(false)
+            let destroyed = Mutex(0)
+            let pool = TestPool(
+                capacity: 1,
+                check: { _ in
+                    let cancel = cancelNext.withLock { pending in
+                        defer { pending = false }
+                        return pending
+                    }
+                    if cancel {
+                        unsafe withUnsafeCurrentTask { unsafe $0?.cancel() }
+                    }
+                    return true
+                },
+                destroy: { _ in destroyed.withLock { $0 += 1 } }
+            )
+            try await pool.fill(5)
+            cancelNext.withLock { $0 = true }
+
+            let task = Task {
+                do throws(Either<Pool.Lifecycle.Error, Never>) {
+                    let _: Int = try await pool.acquire { .reusable($0) }
+                    return Pool.Lifecycle.Error?.none
+                } catch {
+                    switch error {
+                    case .left(let lifecycle):
+                        return lifecycle
+                    }
+                }
+            }
+
+            #expect(await task.value == .cancelled)
+            #expect(destroyed.withLock { $0 } == 0)
+            let metrics = pool.metrics
+            #expect(metrics.cancellations == 1)
+            #expect(metrics.closed == 0)
+            try #require(metrics.available == 1)
+            let after: Int = try await pool.acquire { .reusable($0 &* 2) }
+            #expect(after == 10)
             await pool.shutdown()
         }
 

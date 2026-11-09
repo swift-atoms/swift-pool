@@ -37,7 +37,7 @@
                 do throws(Pool.Lifecycle.Error) {
                     slot = try await pool.acquireSlot()
                 } catch {
-                    throw .left(error)
+                    throw .left(error == .cancelled ? pool.cancellation() : error)
                 }
                 let (slotIndex, id) = slot
                 var resource = pool.entries.underlying[
@@ -56,14 +56,23 @@
                     continue
                 }
 
-                let admissionError: Pool.Lifecycle.Error? = pool._state.withLock { state in
-                    if state.lifecycle.shutdown.isActive { return .shutdown }
-                    if Task.isCancelled { return .cancelled }
-                    return nil
+                let isShutdown = pool._state.withLock { state in
+                    state.lifecycle.shutdown.isActive
                 }
-                if let admissionError {
+                if isShutdown {
                     _ = await pool.release(resource, from: slotIndex, id: id, as: .invalid)
-                    throw .left(admissionError)
+                    throw .left(.shutdown)
+                }
+                if Task.isCancelled {
+                    if let error = await pool.release(
+                        resource,
+                        from: slotIndex,
+                        id: id,
+                        as: .reusable
+                    ) {
+                        throw .left(error)
+                    }
+                    throw .left(pool.cancellation())
                 }
 
                 let disposition: Pool.Bounded<Resource>.Disposition<T>
@@ -80,45 +89,46 @@
                         throw .left(releaseError)
                     }
                     if Task.isCancelled {
-                        throw .left(.cancelled)
+                        throw .left(pool.cancellation())
                     }
                     throw .right(error)
                 }
 
-                if Task.isCancelled {
-                    let releaseError = await pool.release(
-                        resource,
-                        from: slotIndex,
-                        id: id,
-                        as: .invalid
-                    )
-                    throw .left(releaseError ?? .cancelled)
-                }
-
+                let cancelled = Task.isCancelled
+                let value: T
+                let release: Pool.Bounded<Resource>.Release.Disposition
                 switch consume disposition {
-                case .reusable(let value):
-                    if let error = await pool.release(
-                        resource,
-                        from: slotIndex,
-                        id: id,
-                        as: .reusable
-                    ) {
-                        throw .left(error)
-                    }
-                    return value
+                case .reusable(let returned):
+                    value = returned
+                    release = .reusable
 
-                case .invalid(let value):
-                    if let error = await pool.release(
-                        resource,
-                        from: slotIndex,
-                        id: id,
-                        as: .invalid
-                    ) {
-                        throw .left(error)
-                    }
-                    return value
+                case .invalid(let returned):
+                    value = returned
+                    release = .invalid
                 }
+
+                if let error = await pool.release(
+                    resource,
+                    from: slotIndex,
+                    id: id,
+                    as: release
+                ) {
+                    throw .left(error)
+                }
+                if cancelled {
+                    throw .left(pool.cancellation())
+                }
+                return value
             }
+        }
+    }
+
+    extension Pool.Bounded where Resource: ~Copyable {
+
+        @usableFromInline
+        func cancellation() -> Pool.Lifecycle.Error {
+            _state.withLock { state in state.metrics.cancellations += 1 }
+            return .cancelled
         }
     }
 #endif

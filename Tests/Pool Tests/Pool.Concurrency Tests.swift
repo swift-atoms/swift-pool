@@ -122,6 +122,8 @@
                 let metrics = pool.metrics
                 #expect(metrics.releases == metrics.acquisitions)
                 #expect(metrics.outstanding.current == 0)
+                #expect(metrics.cancellations == UInt64(cancellations.value))
+                #expect(metrics.closed == 0)
 
                 let after = try await pool.acquire { .reusable($0 &* 10) }
                 #expect(after == 30)
